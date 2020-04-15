@@ -28,6 +28,9 @@ int main(){
 
     pause();
 
+    for (i = 0 ; i <= 255 ; i++) //libérer les 256 surfaces
+        SDL_FreeSurface(lignes[i]);
+
     SDL_Quit();
 
     return EXIT_SUCCESS;
