@@ -37,6 +37,7 @@ int main(){
         exit(EXIT_FAILURE);
     }
 
+    SDL_FreeSurface(rectangle); //liberer la memoire occupée par la surface rectangle
     // pour sortir proprement de SDL
     SDL_Quit();
 
