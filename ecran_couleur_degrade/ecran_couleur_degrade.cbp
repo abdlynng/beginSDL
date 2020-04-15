@@ -35,7 +35,9 @@
 		<Linker>
 			<Add option="`sdl-config --libs`" />
 		</Linker>
-		<Unit filename="main.cpp" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
