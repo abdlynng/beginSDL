@@ -17,3 +17,22 @@ int main(){
 
     return EXIT_SUCCESS;
 }
+
+/* pour mettre en pause notre programme
+*  et fquitter la fenetre par le clic du bouton quitter
+*/
+void pause()
+{
+    int continuer = 1;
+    SDL_Event event;
+
+    while (continuer)
+    {
+        SDL_WaitEvent(&event);
+        switch(event.type)
+        {
+            case SDL_QUIT:
+                continuer = 0;
+        }
+    }
+}
