@@ -9,6 +9,7 @@ int main(){
     if (SDL_Init(SDL_INIT_VIDEO) == 0){
         // ( largeur, hauteur, nombre de pixel:32 est la valeur max, option:HWSURFACE chargement par le memoire video)
         SDL_SetVideoMode(500,500,32,SDL_HWSURFACE);
+        SDL_WM_SetCaption("Ma premiere Fenetre C",NULL);
         pause();
     }
     else{
