@@ -6,11 +6,17 @@ void pause();
 
 int main(){
 
+    SDL_Surface *ecran = NULL;
+
     if (SDL_Init(SDL_INIT_VIDEO) == 0){
         // ( largeur, hauteur, nombre de pixel:32 est la valeur max, option:HWSURFACE chargement par le memoire video)
-        SDL_SetVideoMode(500,500,32,SDL_HWSURFACE);
+        ecran = SDL_SetVideoMode(500,500,32,SDL_HWSURFACE);
         SDL_WM_SetCaption("Ma premiere Fenetre C",NULL);
+        // on colorie toute la fenetre en vert clair
+        SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format,100,250,100));
+        SDL_Flip(ecran); // on met a jour le fenetre
         pause();
+
     }
     else{
         // #Linux : la sortie d'erreur sera le console
