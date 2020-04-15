@@ -21,16 +21,16 @@ int main(){
         position.y = i;
 
         *(ligne+i)= SDL_CreateRGBSurface(SDL_SWSURFACE,600,1,32,0,0,0,0);
-        SDL_FillRect(ligne[i],NULL,SDL_MapRGB(ecran->format,i,i,i));
+        SDL_FillRect(ligne[i],NULL,SDL_MapRGB(ecran->format,i,250,0));
         SDL_BlitSurface(ligne[i],NULL,ecran,&position);
     }
 
-    for (i=255; i>=0; i--){
+    for (i=(hauteur/2); i>=0; i--){
         position.x = 0;
         position.y = hauteur-i;
 
         *(ligne+i)= SDL_CreateRGBSurface(SDL_SWSURFACE,600,1,32,0,0,0,0);
-        SDL_FillRect(ligne[i],NULL,SDL_MapRGB(ecran->format,i,i,i));
+        SDL_FillRect(ligne[i],NULL,SDL_MapRGB(ecran->format,250,i,0));
         SDL_BlitSurface(ligne[i],NULL,ecran,&position);
     }
 
