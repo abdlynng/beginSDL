@@ -2,9 +2,16 @@
 #include <stdlib.h>
 #include <SDL.h>
 
+void pause();
+
 int main(){
 
-    if (SDL_Init(SDL_INIT_VIDEO)== -1){
+    if (SDL_Init(SDL_INIT_VIDEO) == 0){
+        // ( largeur, hauteur, nombre de pixel:32 est la valeur max, option:HWSURFACE chargement par le memoire video)
+        SDL_SetVideoMode(500,500,32,SDL_HWSURFACE);
+        pause();
+    }
+    else{
         // #Linux : la sortie d'erreur sera le console
         printf("erreur");
         // #Windows : la sortie d'eereur vers un fichier temporaire stderr
