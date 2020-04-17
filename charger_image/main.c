@@ -7,7 +7,7 @@ void pause();
 int main(){
 
     SDL_Surface *ecran = NULL;
-    SDL_Surface *imageFond = NULL, *zozor = NULL;
+    SDL_Surface *imageFond = NULL, *zozor = NULL, *icone = NULL;
     SDL_Rect positionImageFond, positionZozor;
 
     positionImageFond.x = 0;
@@ -18,7 +18,9 @@ int main(){
     SDL_Init(SDL_INIT_VIDEO);
 
     /* charcgement de l'icone juste avant l'ouverture de la surface */
-    SDL_WM_SetIcon(SDL_LoadBMP("sdl_icone.bmp"), NULL);
+    icone = SDL_LoadBMP("sdl_icone.bmp");
+    SDL_SetAlpha(icone, SDL_SRCALPHA, 0);
+    SDL_WM_SetIcon(icone, NULL);
 
     ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE);
     SDL_WM_SetCaption("chargement image de fond", NULL);
@@ -30,6 +32,8 @@ int main(){
     zozor = SDL_LoadBMP("zozor.bmp");
     /* On rend le bleu derrière Zozor transparent : */
     SDL_SetColorKey(zozor, SDL_SRCCOLORKEY, SDL_MapRGB(zozor->format, 0, 0, 255));
+    /* Transparence Alpha moyenne (128) : */
+    SDL_SetAlpha(zozor, SDL_SRCALPHA, 128);
     /* On blitte l'image maintenant transparente sur le fond : */
     SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
 
