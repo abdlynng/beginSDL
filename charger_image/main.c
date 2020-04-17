@@ -14,7 +14,11 @@ int main(){
     positionImageFond.y = 0;
 
     SDL_Init(SDL_INIT_VIDEO);
-    ecran = SDL_SetVideoMode(900,600,32,SDL_HWSURFACE);
+
+    /* charcgement de l'icone juste avant l'ouverture de la surface */
+    SDL_WM_SetIcon(SDL_LoadBMP("sdl_icone.bmp"), NULL);
+
+    ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE);
     SDL_WM_SetCaption("chargement image de fond", NULL);
 
     imageFond = SDL_LoadBMP("lac_en_montagne.bmp");
@@ -22,6 +26,8 @@ int main(){
 
     SDL_Flip(ecran);
     pause();
+    SDL_FreeSurface(imageFond);
+
     SDL_Quit();
     return EXIT_SUCCESS;
 }
