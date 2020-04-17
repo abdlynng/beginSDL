@@ -7,11 +7,13 @@ void pause();
 int main(){
 
     SDL_Surface *ecran = NULL;
-    SDL_Surface *imageFond = NULL;
-    SDL_Rect positionImageFond;
+    SDL_Surface *imageFond = NULL, *zozor = NULL;
+    SDL_Rect positionImageFond, positionZozor;
 
     positionImageFond.x = 0;
     positionImageFond.y = 0;
+    positionZozor.x = 500;
+    positionZozor.y =  260;
 
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -23,6 +25,10 @@ int main(){
 
     imageFond = SDL_LoadBMP("lac_en_montagne.bmp");
     SDL_BlitSurface(imageFond,NULL,ecran,&positionImageFond);
+
+    /* Chargement et blittage de Zozor sur la scène */
+    zozor = SDL_LoadBMP("zozor.bmp");
+    SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
 
     SDL_Flip(ecran);
     pause();
