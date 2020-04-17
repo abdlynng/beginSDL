@@ -26,8 +26,11 @@ int main(){
     imageFond = SDL_LoadBMP("lac_en_montagne.bmp");
     SDL_BlitSurface(imageFond,NULL,ecran,&positionImageFond);
 
-    /* Chargement et blittage de Zozor sur la scène */
+    /* On charge l'image : */
     zozor = SDL_LoadBMP("zozor.bmp");
+    /* On rend le bleu derrière Zozor transparent : */
+    SDL_SetColorKey(zozor, SDL_SRCCOLORKEY, SDL_MapRGB(zozor->format, 0, 0, 255));
+    /* On blitte l'image maintenant transparente sur le fond : */
     SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
 
     SDL_Flip(ecran);
