@@ -1,25 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL.h>
+#include <SDL_image.h>
 
 void pause();
 
 int main(){
 
     SDL_Surface *ecran = NULL;
-    SDL_Surface *imageFond = NULL, *zozor = NULL, *icone = NULL;
-    SDL_Rect positionImageFond, positionZozor;
+    SDL_Surface *imageFond = NULL, *zozor = NULL, *icone = NULL, *sapin = NULL;
+    SDL_Rect positionImageFond, positionZozor, positionSapin;
 
     positionImageFond.x = 0;
     positionImageFond.y = 0;
     positionZozor.x = 500;
-    positionZozor.y =  260;
-
+    positionZozor.y = 260;
+    positionSapin.x = 600;
+    positionSapin.y = 250;
     SDL_Init(SDL_INIT_VIDEO);
 
     /* charcgement de l'icone juste avant l'ouverture de la surface */
     icone = SDL_LoadBMP("sdl_icone.bmp");
-    SDL_SetAlpha(icone, SDL_SRCALPHA, 0);
     SDL_WM_SetIcon(icone, NULL);
 
     ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE);
@@ -36,6 +37,12 @@ int main(){
     SDL_SetAlpha(zozor, SDL_SRCALPHA, 128);
     /* On blitte l'image maintenant transparente sur le fond : */
     SDL_BlitSurface(zozor, NULL, ecran, &positionZozor);
+
+        /* Chargement d'un PNG avec IMG_Load
+    Celui-ci est automatiquement rendu transparent car les informations de
+    transparence sont codées à l'intérieur du fichier PNG */
+    sapin = IMG_Load("sapin.png");
+    SDL_BlitSurface(sapin, NULL, ecran, &positionSapin);
 
     SDL_Flip(ecran);
     pause();
