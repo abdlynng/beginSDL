@@ -78,6 +78,10 @@ int main(){
                     continuer = 0;
                 else;
                 break;
+
+            case SDL_MOUSEMOTION:
+                positionZozor.x = event.motion.x;
+                positionZozor.y = event.motion.y;
         }
         SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
         SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
