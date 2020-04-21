@@ -25,20 +25,13 @@ int main(){
     positionZozor.y = ecran->h / 2 - zozor->h / 2;
     SDL_SetColorKey(zozor, SDL_SRCCOLORKEY, SDL_MapRGB(zozor->format, 0, 0, 255));
     SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
-
     SDL_Flip(ecran);
 
-    pause();
-    SDL_FreeSurface(zozor);
-    SDL_Quit();
-    return EXIT_SUCCESS;
-}
-
-void pause()
-{
     int continuer = 1;
     SDL_Event event;
-
+    //pour enfoncer une touche du clavier
+    SDL_EnableKeyRepeat(10, 10);
+    //programme prncipale du deplacement de zozor
     while (continuer)
     {
         SDL_WaitEvent(&event);
@@ -52,8 +45,27 @@ void pause()
                     case SDLK_ESCAPE:
                         continuer = 0;
                         break;
+                    case SDLK_LEFT:
+                        positionZozor.x = positionZozor.x - 19;
+                        break;
+                    case SDLK_RIGHT:
+                        positionZozor.x = positionZozor.x + 3;
+                        break;
+                    case SDLK_UP:
+                        positionZozor.y = positionZozor.y - 3;
+                        break;
+                    case SDLK_DOWN:
+                        positionZozor.y = positionZozor.y + 3;
+                        break;
                 }
                 break;
         }
+        //SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
+        SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
+        SDL_Flip(ecran);
     }
+
+    SDL_FreeSurface(zozor);
+    SDL_Quit();
+    return EXIT_SUCCESS;
 }
