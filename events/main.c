@@ -15,7 +15,7 @@ int main(){
 
 
     SDL_Init(SDL_INIT_VIDEO);
-    ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE | SDL_DOUBLEBUF);
+    ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE | SDL_DOUBLEBUF |SDL_RESIZABLE);
     SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
     SDL_WM_SetCaption("les evenements",NULL);
 
