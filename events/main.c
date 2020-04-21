@@ -46,7 +46,7 @@ int main(){
                         continuer = 0;
                         break;
                     case SDLK_LEFT:
-                        positionZozor.x = positionZozor.x - 19;
+                        positionZozor.x = positionZozor.x - 3;
                         break;
                     case SDLK_RIGHT:
                         positionZozor.x = positionZozor.x + 3;
@@ -60,7 +60,7 @@ int main(){
                 }
                 break;
         }
-        //SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
+        SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
         SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
         SDL_Flip(ecran);
     }
