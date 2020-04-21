@@ -31,6 +31,10 @@ int main(){
     SDL_Event event;
     //pour enfoncer une touche du clavier
     SDL_EnableKeyRepeat(10, 10);
+    //masquer la position de la souris
+    SDL_ShowCursor(SDL_DISABLE); //enable pour la demasquer
+    //placer le curseur de la souris manuellemnt
+    SDL_WarpMouse(ecran->w / 2, ecran->h / 6);
     //programme prncipale du deplacement de zozor
     while (continuer)
     {
@@ -82,6 +86,9 @@ int main(){
             case SDL_MOUSEMOTION:
                 positionZozor.x = event.motion.x;
                 positionZozor.y = event.motion.y;
+                break;
+
+
         }
         SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
         SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
