@@ -13,9 +13,11 @@ int main(){
     positionZozor.x = 0;
     positionZozor.y = 0;
 
+    int largeurEcran = 800;
+    int hauteurEcran = 600;
 
     SDL_Init(SDL_INIT_VIDEO);
-    ecran = SDL_SetVideoMode(800,600,32,SDL_HWSURFACE | SDL_DOUBLEBUF |SDL_RESIZABLE);
+    ecran = SDL_SetVideoMode(largeurEcran,hauteurEcran,32,SDL_HWSURFACE | SDL_DOUBLEBUF |SDL_RESIZABLE);
     SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
     SDL_WM_SetCaption("les evenements",NULL);
 
@@ -54,7 +56,7 @@ int main(){
                         break;
 
                     case SDLK_RIGHT:
-                        if(positionZozor.x < 800)
+                        if(positionZozor.x < largeurEcran)
                             positionZozor.x = positionZozor.x + 3;
                         else
                             positionZozor.x = 0;
@@ -65,7 +67,7 @@ int main(){
                         break;
 
                     case SDLK_DOWN:
-                        if (positionZozor.y < 600)
+                        if (positionZozor.y < hauteurEcran)
                             positionZozor.y = positionZozor.y + 3;
                         else
                             positionZozor.y = 0;
@@ -88,6 +90,10 @@ int main(){
                 positionZozor.y = event.motion.y;
                 break;
 
+            case SDL_VIDEORESIZE:
+                positionZozor.x = event.resize.w/2;
+                positionZozor.y = event.resize.h/2;
+                break;
 
         }
         SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
