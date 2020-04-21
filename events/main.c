@@ -48,14 +48,23 @@ int main(){
                     case SDLK_LEFT:
                         positionZozor.x = positionZozor.x - 3;
                         break;
+
                     case SDLK_RIGHT:
-                        positionZozor.x = positionZozor.x + 3;
+                        if(positionZozor.x < 800)
+                            positionZozor.x = positionZozor.x + 3;
+                        else
+                            positionZozor.x = 0;
                         break;
+
                     case SDLK_UP:
                         positionZozor.y = positionZozor.y - 3;
                         break;
+
                     case SDLK_DOWN:
-                        positionZozor.y = positionZozor.y + 3;
+                        if (positionZozor.y < 600)
+                            positionZozor.y = positionZozor.y + 3;
+                        else
+                            positionZozor.y = 0;
                         break;
                 }
                 break;
