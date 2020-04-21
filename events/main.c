@@ -59,6 +59,11 @@ int main(){
                         break;
                 }
                 break;
+            case SDL_MOUSEBUTTONUP:
+                if(event.button.button == SDL_BUTTON_RIGHT){
+                    continuer = 0;
+                    break;
+                }
         }
         SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format, 255, 255, 255));
         SDL_BlitSurface(zozor,NULL,ecran,&positionZozor);
